@@ -1,9 +1,11 @@
 import './App.css';
-
+import InputForm from './Forms/inputForm'
 function App() {
   return (
-    <div className="App"><h1></h1>  </div>
+    <div className="App">
+      <InputForm></InputForm>
+    </div>
   );
-} 
+}
 
 export default App;
