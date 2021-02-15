@@ -1,6 +1,6 @@
 import React from 'react'
 import './input.css'
-import { axios } from 'axios'
+import  Axios  from 'axios'
 import { useForm } from 'react-hook-form'
 
 const InputForm = () => {
@@ -9,20 +9,20 @@ const InputForm = () => {
 
     const onSubmit = (data) => {
         console.log(data)
-        axios({
-            method: 'post',
-            url: '127.0.0.1:3001/user',
-            data: data
-        }).then(function (response) {
-            console.log(response)
+        Axios.post('http://localhost:3001/user',{COD: data.Codigo, NAME:data.Nome,DATE: data.Data, PHOTO: data.Foto}).then(()=>{
+            alert('Cadastro feito com sucesso')
         })
+        
     }
 
     return (
         <div className="modal">
             <form
                 className="Form"
+                method="post"
+                encType="multipart/form-data"
                 onSubmit={handleSubmit(onSubmit)}
+                
             >
                 <label>Código</label>
                 <input
@@ -60,7 +60,7 @@ const InputForm = () => {
                     placeholder="Digite o codigo do usuário"
                     className="inputForm"
                 />
-                <input type="submit" />
+                <input type="submit" className="button"/>
             </form>
         </div>
     )
